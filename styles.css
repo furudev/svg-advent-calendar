@@ -89,7 +89,38 @@
   }
 
   .logo svg {
-    color: var(--ac);
+    color: var(--ac-l);
+  }
+
+  .logo path {
+    --length: 23.6762752532959;
+    --color: var(--ac);
+
+    stroke-dasharray: var(--length);
+    stroke-dashoffset: var(--length);
+    animation: dash 1.5s linear calc(1000ms * var(--i)) forwards;
+  }
+
+  .logo #tree-middle {
+    --length: 24.765207290649414;
+  }
+
+  .logo #tree-bottom {
+    --length: 29.66153335571289;
+  }
+
+  .logo #tree-base {
+    --length: 3;
+  }
+
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: var(--length);
+    }
+    100% {
+      color: var(--color);
+      stroke-dashoffset: 0;
+    }
   }
 
   .logo-title {
