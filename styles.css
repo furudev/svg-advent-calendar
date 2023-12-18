@@ -1,4 +1,4 @@
-@layer reset, global;
+@layer reset, global, day1, day2, day3, day4;
 
 :root {
   --bg: #0d1512;
@@ -17,8 +17,22 @@
   --ac6-l: #ffe7b3;
   --fs-lg: 48px;
   --ff: 'Kalnia', serif;
+  --color-scheme: dark;
 
   --tf-easeInOutQuad: cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+
+html {
+  color-scheme: var(--color-scheme);
+}
+
+body {
+  background-color: var(--bg);
+  font-size: 16px;
+  font-family: var(--ff);
+
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
 @layer reset {
@@ -28,15 +42,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-
-  body {
-    background-color: var(--bg);
-    font-size: 16px;
-    font-family: var(--ff);
-
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
   }
 
   img,
@@ -179,6 +184,11 @@
     isolation: isolate;
     opacity: 0;
     transform-style: preserve-3d;
+  }
+
+  .box a {
+    text-decoration: none;
+    color: inherit;
   }
 
   .side.left .box {
@@ -330,5 +340,139 @@
 
   .box span {
     font-size: 36px;
+  }
+}
+
+@layer day1 {
+  .bomb-body {
+    transition: fill 0.5s;
+  }
+
+  .bomb:hover {
+    animation: jiggle 2s var(--tf-easeInOutQuad) infinite forwards;
+  }
+
+  .bomb-body:hover {
+    fill: var(--ac2-l);
+  }
+
+  @keyframes jiggle {
+    0% {
+      transform: rotate(-15deg);
+    }
+
+    25% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(15deg);
+    }
+
+    75% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(-15deg);
+    }
+  }
+}
+
+@layer day2 {
+  .tree circle {
+    animation: glow 2s ease calc(500ms * var(--i)) infinite;
+  }
+
+  @keyframes glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 0 transparent);
+    }
+
+    50% {
+      filter: drop-shadow(0 0 10px var(--color));
+    }
+  }
+}
+
+@layer day3 {
+  .head {
+    fill: #cd803d;
+  }
+
+  .eye {
+    fill: whitesmoke;
+  }
+
+  .limb {
+    stroke: #cd803d;
+    stroke-width: 35px;
+    stroke-linecap: round;
+  }
+
+  .mouth {
+    fill: hotpink;
+    stroke: whitesmoke;
+    stroke-width: 2px;
+  }
+
+  .button {
+    fill: saddlebrown;
+  }
+}
+
+@layer day4 {
+  .house {
+    background-color: whitesmoke;
+  }
+
+  .wall {
+    fill: white;
+    stroke: black;
+    stroke-width: 2px;
+  }
+
+  .roof {
+    fill: none;
+    stroke: firebrick;
+    stroke-width: 10px;
+    stroke-linecap: round;
+  }
+
+  .chimney {
+    fill: firebrick;
+  }
+
+  .door {
+    fill: firebrick;
+  }
+
+  .door-knob {
+    fill: white;
+  }
+
+  .stair {
+    fill: lightgray;
+  }
+
+  .window {
+    fill: #fdea96;
+  }
+
+  .window-sill {
+    fill: firebrick;
+    stroke-linecap: round;
+  }
+
+  .door,
+  .door-knob,
+  .stair,
+  .chimney,
+  .window,
+  .line,
+  .window-sill {
+    stroke: black;
+    stroke-width: 2px;
   }
 }
